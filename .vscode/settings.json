@@ -2,6 +2,9 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.python"
     },
+    "cSpell.words": [
+        "corsheaders"
+    ],
     "python.analysis.typeCheckingMode": "basic",
     "python.formatting.provider": "none"
 }
