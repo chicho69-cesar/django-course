@@ -3,7 +3,8 @@
         "editor.defaultFormatter": "ms-python.python"
     },
     "cSpell.words": [
-        "corsheaders"
+        "corsheaders",
+        "simplejwt"
     ],
     "python.analysis.typeCheckingMode": "basic",
     "python.formatting.provider": "none"
