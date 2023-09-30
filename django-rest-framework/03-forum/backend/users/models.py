@@ -9,13 +9,8 @@ class CustomAccountManager(BaseUserManager):
             raise ValueError(_('You must provide an email address'))
 
         email = self.normalize_email(email)
-        user = self.model(
-            email=email,
-            user_name=user_name,
-            first_name=first_name,
-            **other_fields
-        )
 
+        user = self.model(email=email, user_name=user_name, first_name=first_name, **other_fields)
         user.set_password(password)
         user.save()
 
@@ -34,15 +29,14 @@ class CustomAccountManager(BaseUserManager):
         return self.create_user(email, user_name, first_name, password, **other_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email      = models.EmailField(_('email address'), unique=True)
-    user_name  = models.CharField(max_length=150, unique=True)
-    first_name = models.CharField(max_length=150)
-    start_date = models.DateTimeField(default=timezone.now)
-    bio        = models.TextField(_('bio'), max_length=500, blank=True)
-    image      = models.ImageField(null=True, blank=True, default='/placeholder.jpg')
-    is_staff   = models.BooleanField(default=False)
-    is_active  = models.BooleanField(default=True)
-    objects    = CustomAccountManager()
-
+    email       = models.EmailField(_('email address'), unique=True)
+    user_name   = models.CharField(max_length=150, unique=True)
+    first_name  = models.CharField(max_length=150)
+    start_date  = models.DateTimeField(default=timezone.now)
+    bio         = models.TextField(_('bio'), max_length=500, blank=True)
+    image       = models.ImageField(null=True, blank=True, default='/placeholder.jpg')
+    is_staff    = models.BooleanField(default=False)
+    is_active   = models.BooleanField(default=True)
+    objects     = CustomAccountManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['user_name', 'first_name']
