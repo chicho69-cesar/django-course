@@ -1,6 +1,7 @@
 [MASTER]
 disable=
     E0401, # Error on imports
+    E1101, # Methos not knowed
     C0103, # snake case naming
     C0114, # missing-module-docstring
     C0115, # missing-class-docstring
