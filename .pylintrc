@@ -6,3 +6,4 @@ disable=
     C0115, # missing-class-docstring
     C0116, # missing-function-docstring
     W0105, # more than one multi line comment
+    W0702, # Define the type of the exeption
