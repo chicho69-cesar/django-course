@@ -1,5 +1,7 @@
 import axios from 'axios'
+
 import * as constants from '../constants/blog'
+import { API_URL } from '../constants/config'
 
 export function updateBlogAction(blog) {
   return async (dispatch, getState) => {
@@ -7,27 +9,27 @@ export function updateBlogAction(blog) {
       dispatch({
         type: constants.BLOG_UPDATE_REQUEST
       })
-  
+
       const {
         userLogin: { userInfo },
       } = getState()
-  
+
       const config = {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${userInfo.token}`
         }
       }
-  
+
       const { data } = await axios.put(
-        `http://127.0.0.1:8000/blogs/put/${blog.id}/`, blog, config
+        `${API_URL}/blogs/update/${blog.id}/`, blog, config
       )
-  
+
       dispatch({
         type: constants.BLOG_UPDATE_SUCCESS,
         payload: data,
       })
-  
+
       dispatch({
         type: constants.BLOG_DETAILS_REQUEST,
         payload: data
@@ -62,7 +64,7 @@ export function deleteBlogAction(id) {
       }
 
       /* const { data } =  */await axios.delete(
-        `http://127.0.0.1:8000/blogs/delete/${id}`, config
+        `${API_URL}/blogs/delete/${id}`, config
       )
 
       dispatch({
@@ -98,7 +100,7 @@ export function createBlogComment(id, text) {
       }
 
       const { data } = await axios.post(
-        `http://127.0.0.1:8000/blogs/comment/${id}/`, text, config
+        `${API_URL}/blogs/comment/${id}/`, text, config
       )
 
       dispatch({
@@ -132,7 +134,7 @@ export function blogActionDetails(id) {
         }
       }
 
-      const { data } = await axios.get(`http://127.0.0.1:8000/blogs/get/${id}/`, config);
+      const { data } = await axios.get(`${API_URL}/blogs/get/${id}/`, config);
 
       dispatch({
         type: constants.BLOG_DETAILS_SUCCESS,
@@ -169,7 +171,7 @@ export function createBlogAction(body) {
       }
 
       const { data } = await axios.post(
-        `http://127.0.0.1:8000/blogs/post/`,
+        `${API_URL}/blogs/create/`,
         { 'body': body },
         config
       )
@@ -205,7 +207,7 @@ export function listBlogs() {
         }
       }
 
-      const { data } = await axios.get(`http://127.0.0.1:8000/blogs/get/`, config);
+      const { data } = await axios.get(`${API_URL}/blogs/get/`, config);
 
       dispatch({
         type: constants.BLOG_LIST_SUCCESS,

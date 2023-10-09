@@ -1,5 +1,7 @@
 import axios from 'axios'
+
 import * as constants from '../constants/user'
+import { API_URL } from '../constants/config'
 
 export function editUser(user) {
   return async (dispatch, getState) => {
@@ -19,7 +21,7 @@ export function editUser(user) {
       }
 
       const { data } = await axios.put(
-        'http://127.0.0.1:8000/users/put/', user, config
+        `${API_URL}/users/update-user/`, user, config
       )
 
       dispatch({
@@ -32,7 +34,7 @@ export function editUser(user) {
         payload: data
       })
 
-      localStorage.setItem('userInfo', JSON.stringify(data))
+      localStorage.setItem('03_forum_userInfo', JSON.stringify(data))
     } catch (error) {
       dispatch({
         type: constants.USER_EDIT_FAIL,
@@ -61,7 +63,7 @@ export function getSoloUser(id) {
       }
 
       const { data } = await axios.get(
-        `http://127.0.0.1:8000/users/${id}/`,
+        `${API_URL}/users/user-info/${id}/`,
         config
       )
 
@@ -97,7 +99,7 @@ export function getListUsers() {
       }
 
       const { data } = await axios.get(
-        `http://127.0.0.1:8000/users/getUsers/`,
+        `${API_URL}/users/users-list/`,
         config
       )
 
@@ -118,7 +120,7 @@ export function getListUsers() {
 
 export function logout() {
   return (dispatch) => {
-    localStorage.removeItem('userInfo')
+    localStorage.removeItem('03_forum_userInfo')
     dispatch({ type: constants.USER_LOGOUT })
   }
 }
@@ -135,7 +137,7 @@ export function register(user_name, email, password) {
       }
 
       const { data } = await axios.post(
-        'http://127.0.0.1:8000/users/register/',
+        `${API_URL}/users/register/`,
         { 'user_name': user_name, 'email': email, 'password': password }, config
       )
 
@@ -149,7 +151,7 @@ export function register(user_name, email, password) {
         payload: data
       })
 
-      localStorage.setItem('userInfo', JSON.stringify(data))
+      localStorage.setItem('03_forum_userInfo', JSON.stringify(data))
     } catch (error) {
       dispatch({
         type: constants.USER_REGISTER_FAIL,
@@ -173,7 +175,7 @@ export function login(email, password) {
       }
 
       const { data } = await axios.post(
-        'http://127.0.0.1:8000/users/login/',
+        `${API_URL}/users/login/`,
         { 'email': email, 'password': password }, config
       )
 
@@ -182,7 +184,7 @@ export function login(email, password) {
         payload: data
       })
 
-      localStorage.setItem('userInfo', JSON.stringify(data))
+      localStorage.setItem('03_forum_userInfo', JSON.stringify(data))
     } catch (error) {
       dispatch({
         type: constants.USER_LOGIN_FAIL,
