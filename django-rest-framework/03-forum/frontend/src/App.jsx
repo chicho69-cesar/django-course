@@ -2,7 +2,7 @@ function App() {
   return (
     <>
       <h1 className='text-slate-800 text-center text-4xl'>
-        Hello World!!!
+        <span>Hello</span> World!!!
       </h1>
     </>
   )
