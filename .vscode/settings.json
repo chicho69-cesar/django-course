@@ -4,6 +4,8 @@
     },
     "cSpell.words": [
         "corsheaders",
+        "headlessui",
+        "heroicons",
         "simplejwt"
     ],
     "python.analysis.typeCheckingMode": "basic",
