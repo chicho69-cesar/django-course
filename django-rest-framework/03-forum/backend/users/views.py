@@ -62,8 +62,7 @@ def update_user(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def upload_image(request):
-    data = request.data
-    user_id = data['user_id']
+    user_id = request.user.id
     user = User.objects.get(id=user_id)
     user.image = request.FILES.get('image')
     user.save()
