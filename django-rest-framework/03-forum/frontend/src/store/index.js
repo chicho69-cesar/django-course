@@ -37,7 +37,7 @@ const reducer = combineReducers({
 
 const userInfoStorage = window.localStorage.getItem('03_forum_userInfo')
   ? JSON.parse(window.localStorage.getItem('03_forum_userInfo'))
-  : {}
+  : null
 
 const initialState = {
   userLogin: {
