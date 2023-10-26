@@ -58,10 +58,10 @@ export default function Header() {
                   <div>
                     <Menu.Button className='flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                       <span className='sr-only'>Open user menu</span>
-                      
+
                       <img
-                        className='h-10 w-10 rounded-full'
-                        src={`http://127.0.0.1:8000/${userInfo.image}`}
+                        className='h-10 w-10 rounded-full object-cover object-center'
+                        src={`http://127.0.0.1:8000${userInfo.image}`}
                         alt=''
                       />
                     </Menu.Button>
@@ -161,10 +161,10 @@ export default function Header() {
                       <div>
                         <Menu.Button className='flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                           <span className='sr-only'>Open user menu</span>
-                          
+
                           <img
                             className='h-10 w-10 rounded-full'
-                            src={`http://127.0.0.1:8000/${userInfo.image}`}
+                            src={`http://127.0.0.1:8000${userInfo.image}`}
                             alt=''
                           />
                         </Menu.Button>
